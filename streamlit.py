@@ -1,12 +1,12 @@
 import streamlit as st
 
 # Titel
-st.title("Dokumentation af fremskrivningsmodel for elektrikeruddannelsen")
+st.title("Dokumentation af fremskrivningsmodel for vvs-energiuddannelsen")
 
 # Formål
 st.header("Formål")
 st.write("""
-Formålet med modellen er at fremskrive tilgang, frafald og bestand på elektrikeruddannelsen frem til 2036, 
+Formålet med modellen er at fremskrive tilgang, frafald og bestand på vvs-energiuddannelsen frem til 2036, 
 baseret på historiske data, befolkningsfremskrivninger og en række metodiske antagelser.
 
 Derudover indgår flere scenarier, der tager højde for den forventede indførelse af EPX (Erhvervsparat X) fra 2030, 
@@ -17,18 +17,18 @@ hvor andelen af elever, der vælger EPX, varierer (20%, 30%, 40%, 50%). Dette p�
 st.header("Datagrundlag")
 st.write("""
 - **Befolkningstal (FOLK2_filtered.xlsx):** Befolkning fordelt på aldersgrupper. Fremskrivningsdata fra Danmarks Statistik.
-- **Tilgang til GF2 elektriker (Tilgang_GF2_elektriker.xlsx):** Antal elever, der starter på GF2 elektrikeruddannelsen.
+- **Tilgang til GF2 vvs-energi (Tilgang_GF2_vvs.xlsx):** Antal elever, der starter på GF2 vvs-energiuddannelsen.
 - **Tilgang til GF2 samlet (Tilgang_GF2.xlsx):** Samlet antal GF2-elever.
-- **Bestand elektriker (bestand_elektriker.xlsx):** Historisk bestand af elever på elektrikeruddannelsen.
+- **Bestand vvs-energi (bestand_vvs.xlsx):** Historisk bestand af elever på vvs-energiuddannelsen.
 - **Bestand total (bestand_total.xlsx):** Samlet bestand af GF2-elever.
-- **Frafaldsandele elektriker (frafald_andele.xlsx):** Historiske frafaldsandele på elektrikeruddannelsen.
+- **Frafaldsandele vvs-energi (frafald_andele_vvs.xlsx):** Historiske frafaldsandele på vvs-energiuddannelsen.
 Dækning: 2016-2024 (Befolkningstal 2016-2036)
 Aldersgrupper: 15-17 år, 18-19 år, 20-24 år, 25+ år
 """)
 
 # Metoder
 st.header("Metoder")
-st.subheader("1. Tilgang til GF2 elektriker")
+st.subheader("1. Tilgang til GF2 vvs-energi")
 st.write("""
 - Historiske andele er beregnet ift. både den samlede GF2-tilgang og befolkningen i aldersgrupperne.
 - For begge mål er estimeret en lineær trend (mindste kvadraters metode).
@@ -45,8 +45,8 @@ st.write("""
 st.subheader("3. Bestand af elektriker-elever")
 st.write("""
 - For hver aldersgruppe er beregnet to historiske andele:
-    - Elektrikerbestand ift. totalbestand
-    - Elektrikerbestand ift. befolkning
+    - Vvs-energibestand ift. totalbestand
+    - Vvs-energibestand ift. befolkning
 - Begge andele fremskrives med lineær trend.
 - Resultatet beregnes som vægtet gennemsnit af de to trends, multipliceret med hhv. totalbestand og befolkningstal.
 """)
@@ -62,10 +62,10 @@ Fra 2030 indføres EPX, hvilket ændrer fordelingen af elever på GF2. Flere sce
 - 50% EPX
 
 Antagelser:
-- Hvis få vælger EPX, starter flere direkte på GF2. Hvis mange vælger EPX, reduceres den direkte GF2-tilgang tilsvarende.
+- Hvis få vælger EPX, starter flere direkte på GF2 vvs-energi. Hvis mange vælger EPX, reduceres den direkte GF2-tilgang tilsvarende.
 - EPX varer to år, hvilket betyder, at størstedelen af eleverne først fremgår som tilgang på GF2 i 18-19-årsgruppen.
 - Effekten er gradvis, hvor faldet i 15-17-årige først for alvor ses fra 2031.
-- Ca. 60% af EPX-eleverne antages at vælge erhvervsuddannelse. Andelen af elektrikere beregnes ud fra historiske data.
+- Ca. 60% af EPX-eleverne antages at vælge erhvervsuddannelse. Andelen af vvs-energi'ere beregnes ud fra historiske data.
 """)
 
 # Antagelser og forbehold
@@ -84,7 +84,7 @@ st.write("""
 Resultatet er gjort tilgængeligt i et interaktivt PowerBI-dashboard, hvor brugeren kan:
 - Vælge mellem scenarier (Uden EPX, 20%, 30%, 40%, 50% EPX)
 - Analysere forskellige aldersgrupper og parametre (tilgang, frafald, bestand)
-- Se effekten af EPX på aldersfordeling og samlet elektrikerbestand
+- Se effekten af EPX på aldersfordeling og samlet vvs-energibestand
 """)
 
 # PDF download fra lokal fil
@@ -96,6 +96,6 @@ with open(pdf_path, "rb") as pdf_file:
 st.download_button(
     label="Hent PDF-dokumentation",
     data=PDF,
-    file_name="Dokumentation til fremskrivning.pdf",
+    file_name="Dokumentation til fremskrivning_vvs.pdf",
     mime="application/pdf"
 )
