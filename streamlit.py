@@ -42,7 +42,7 @@ st.write("""
 - Metoden giver en stabil udvikling, hvor udsving udjævnes, men hvor nye strukturelle ændringer ikke indfanges.
 """)
 
-st.subheader("3. Bestand af elektriker-elever")
+st.subheader("3. Bestand af vvs-energielever")
 st.write("""
 - For hver aldersgruppe er beregnet to historiske andele:
     - Vvs-energibestand ift. totalbestand
