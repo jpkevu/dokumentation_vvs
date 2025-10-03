@@ -88,7 +88,7 @@ Resultatet er gjort tilgængeligt i et interaktivt PowerBI-dashboard, hvor bruge
 """)
 
 # PDF download fra lokal fil
-pdf_path = "Dokumentation til fremskrivning.pdf"  # Filen skal ligge i samme mappe som appen
+pdf_path = "Dokumentation til fremskrivning_vvs.pdf"  # Filen skal ligge i samme mappe som appen
 
 with open(pdf_path, "rb") as pdf_file:
     PDF = pdf_file.read()
